@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: theme('colors.marquee.DEFAULT');
+    color: theme('colors.ink.DEFAULT');
+  }
+  :focus-visible {
+    outline: 2px solid theme('colors.marquee.DEFAULT');
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Ticket-stub seat shape: rounded top, small perforation notch
+     under the numeral - the signature visual element of the seat map. */
+  .seat-stub {
+    position: relative;
+    border-radius: 6px 6px 3px 3px;
+  }
+  .seat-stub::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: theme('colors.ink.DEFAULT');
+    transform: translateX(-50%);
+  }
+}
